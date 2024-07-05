@@ -57,3 +57,45 @@ pnpm run test
 ```
 pnpm run dev
 ```
+
+## Example middleware
+
+```ts
+import { Request, Response, NextFunction } from 'express';
+import { z } from 'zod';
+import { NextError } from '../../interfaces/next-error';
+import { StatusCodes } from 'http-status-codes';
+
+const loginSchema = z.object({
+  email: z.string().email('Required valid email'),
+  password: z
+    .string()
+    .min(6, 'Minimum 6 characters required')
+    .max(50, 'Maximum 50 characters allowed'),
+});
+
+export const validateLoginPostData = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const input = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  const validatedInput = loginSchema.safeParse(input);
+
+  if (validatedInput.success) {
+    return next();
+  } else {
+    const nextError: NextError = {
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Invalid email or password',
+      stackTrace: new Error('[ login.middleware ] zod schema failed'),
+      zodError: validatedInput.error,
+    };
+
+    return next(nextError);
+  }
+};
+```
