@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { ErrorResponse } from '../interfaces/error-response';
+import { NextError } from '../interfaces/next-error';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
@@ -9,15 +9,24 @@ export function notFound(req: Request, res: Response, next: NextFunction) {
 }
 
 export function errorHandler(
-  err: Error,
+  error: NextError,
   req: Request,
-  res: Response<ErrorResponse>,
+  res: Response<NextError>,
   next: NextFunction,
 ) {
-  const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
-  res.status(statusCode);
-  res.json({
-    message: err.message,
-    stack: process.env.NODE_ENV === 'production' ? '' : err.stack,
-  });
+  const statusCode = error.statusCode !== undefined ? res.statusCode : 500;
+
+  const responseJson: NextError = {
+    message: error.message,
+  };
+
+  if (process.env.NODE_ENV === 'production') {
+    responseJson.stackTrace = error.stackTrace;
+  }
+  //
+  if (error.zodError !== undefined) {
+    responseJson.zodError = error.zodError;
+  }
+
+  res.status(statusCode).json(responseJson);
 }
