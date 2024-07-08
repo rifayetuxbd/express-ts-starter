@@ -1,4 +1,6 @@
+import { relations } from 'drizzle-orm';
 import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
+import { user } from '../schema';
 
 export const address = pgTable('address', {
   addressId: uuid('address_id').defaultRandom().primaryKey(),
@@ -23,3 +25,10 @@ export const address = pgTable('address', {
     .defaultNow()
     .notNull(),
 });
+
+export const addressRelation = relations(address, ({ one }) => ({
+  user: one(user, {
+    fields: [address.addressId],
+    references: [user.addressId],
+  }),
+}));

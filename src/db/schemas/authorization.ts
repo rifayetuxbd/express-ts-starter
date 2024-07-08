@@ -1,4 +1,6 @@
+import { relations } from 'drizzle-orm';
 import { pgTable, uuid, varchar, timestamp } from 'drizzle-orm/pg-core';
+import { user } from '../schema';
 
 export const authorization = pgTable('authorization', {
   authorizationId: uuid('authorization_id')
@@ -29,3 +31,10 @@ export const authorization = pgTable('authorization', {
     .defaultNow()
     .notNull(),
 });
+
+export const authorizationRelation = relations(authorization, ({ one }) => ({
+  user: one(user, {
+    fields: [authorization.authorizationId],
+    references: [user.authorizationId],
+  }),
+}));
