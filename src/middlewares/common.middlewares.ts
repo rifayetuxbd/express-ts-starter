@@ -1,13 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { NextError } from '../interfaces/next-error';
+import { StatusCodes } from 'http-status-codes';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
-  res.status(404);
-  const error = new Error(`404 - Route Not Found - ${req.originalUrl}`);
+  const error: NextError = {
+    statusCode: StatusCodes.NOT_FOUND,
+    message: '404 - Route Not Found',
+    requestedUrl: req.originalUrl,
+  };
   next(error);
 }
-
 export function errorHandler(
   error: NextError,
   req: Request,

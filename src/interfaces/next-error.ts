@@ -10,4 +10,5 @@ export interface NextError {
   message: string | string[] | CustomMessage[];
   stackTrace?: Error | null;
   zodError?: z.ZodError;
+  requestedUrl?: string;
 }
