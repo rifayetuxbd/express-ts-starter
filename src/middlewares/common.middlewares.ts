@@ -30,6 +30,10 @@ export function errorHandler(
   if (error.zodError !== undefined) {
     responseJson.zodError = error.zodError;
   }
+  //
+  if (error.requestedUrl !== undefined) {
+    responseJson.requestedUrl = error.requestedUrl;
+  }
 
   res.status(statusCode).json(responseJson);
 }
