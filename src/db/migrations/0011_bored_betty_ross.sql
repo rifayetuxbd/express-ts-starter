@@ -1,0 +1,2 @@
+ALTER TABLE "user" RENAME COLUMN "email_verification_link_last_sent_at" TO "email_verification_code_last_sent_at";--> statement-breakpoint
+ALTER TABLE "user" RENAME COLUMN "email_verification_link_sent_count" TO "email_verification_code_sent_count";

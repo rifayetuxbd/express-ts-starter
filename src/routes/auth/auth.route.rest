@@ -1,0 +1,51 @@
+###
+# Login to a account
+POST http://localhost:3060/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "rifayetoffice+admin@gmail.com",
+    "password": "Rifayet123"
+}
+
+###
+
+# Register a new account
+POST http://localhost:3060/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "displayName": "Rifayet",
+    "email": "rifayetoffice+8@gmail.com",
+    "password": "Rifayet123"
+}
+
+###
+
+# Verify email
+POST http://localhost:3060/api/v1/auth/verify-email
+Content-Type: application/json
+
+{
+    "email": "rifayetoffice+12@gmail.com",
+    "verificaitonCode": "123456"
+}
+
+###
+
+# Resend email verification link
+POST http://localhost:3060/api/v1/auth/resend-email-verification-code
+Content-Type: application/json
+
+{
+    "email": "rifayetoffice+12@gmail.com"
+}
+
+### 
+POST http://localhost:3060/api/v1/auth/sign-out
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpZmF5ZXRvZmZpY2UrYWRtaW5AZ21haWwuY29tIiwiZGlzcGxheU5hbWUiOiJBZG1pbiIsImlhdCI6MTcyMTY2ODMxMywiZXhwIjoxNzIxODQxMTEzfQ.aDtcu02S9w0Ebv97dmEb4-n19EcUYw-ToL7qoVLRHvA
+Content-Type: application/json
+
+{
+    
+}

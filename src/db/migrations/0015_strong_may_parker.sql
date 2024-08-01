@@ -1,0 +1,1 @@
+ALTER TABLE "authorization" ADD COLUMN "user_agent" varchar(256) NOT NULL;

@@ -1,0 +1,1 @@
+ALTER TABLE "authorization" DROP COLUMN IF EXISTS "refresh_token_expires_in";

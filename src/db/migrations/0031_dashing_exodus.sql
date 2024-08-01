@@ -1,0 +1,1 @@
+ALTER TABLE "category" ALTER COLUMN "created_by" SET NOT NULL;

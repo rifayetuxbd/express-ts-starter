@@ -1,7 +1,7 @@
 {
-  "name": "express-ts-starter",
+  "name": "hajiganj-crafts",
   "version": "0.0.1",
-  "description": "Starter for an express.js API with Typescript",
+  "description": "Hajiganj crafts backend server",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
@@ -11,8 +11,10 @@
     "lint": "eslint --fix src test",
     "test": "jest",
     "typecheck": "tsc --noEmit",
+    "db:c": "pnpm drizzle-kit check",
     "db:g": "pnpm drizzle-kit generate",
     "db:m": "pnpm drizzle-kit migrate",
+    "db:d": "pnpm drizzle-kit drop",
     "db:p": "pnpm drizzle-kit push",
     "db:s": "pnpm drizzle-kit studio"
   },
@@ -20,11 +22,12 @@
   "author": "Rifayet Azam <mdrifayetazam@gmail.com> (https://rifayet.cercel.app)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rifayetuxbd/express-ts-starter.git"
+    "url": "https://github.com/rifayetuxbd/hajiganj-crafts-be.git"
   },
-  "license": "MIT",
+  "license": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.2",
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",

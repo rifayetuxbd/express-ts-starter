@@ -1,0 +1,1 @@
+ALTER TABLE "authorization" ADD CONSTRAINT "authorization_session_id_unique" UNIQUE("session_id");

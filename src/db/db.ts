@@ -15,7 +15,7 @@ const pool = new Pool({
 //   port: 5432,
 //   user: 'postgres',
 //   password: 'password',
-//   database: 'ng-pcict',
+//   database: 'hajiganj-crafts',
 // });
 
 export const db = drizzle(pool, {

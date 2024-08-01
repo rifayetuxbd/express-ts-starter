@@ -1,0 +1,1 @@
+ALTER TABLE "user" ALTER COLUMN "display_name" SET DATA TYPE varchar(10);

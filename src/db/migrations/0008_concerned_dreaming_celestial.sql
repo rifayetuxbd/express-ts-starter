@@ -1,0 +1,1 @@
+ALTER TABLE "authorization" ADD CONSTRAINT "authorization_verification_code_unique" UNIQUE("verification_code");

@@ -1,0 +1,1 @@
+ALTER TABLE "category" ADD COLUMN "updated_by" uuid;

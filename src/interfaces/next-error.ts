@@ -6,9 +6,13 @@ interface CustomMessage {
 }
 
 export interface NextError {
-  statusCode?: number;
+  statusCode: number;
   message: string | string[] | CustomMessage[];
+  messageCode: string;
   stackTrace?: Error | null;
   zodError?: z.ZodError;
+  /**
+   * Will be populated by the common-middleware
+   */
   requestedUrl?: string;
 }

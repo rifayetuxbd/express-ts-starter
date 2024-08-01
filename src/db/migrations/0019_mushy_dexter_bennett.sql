@@ -1,0 +1,1 @@
+ALTER TABLE "user" ADD CONSTRAINT "password_reset_code_unique" UNIQUE("password_reset_code");
